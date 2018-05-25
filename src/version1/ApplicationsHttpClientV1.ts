@@ -11,7 +11,7 @@ import { IApplicationsClientV1 } from './IApplicationsClientV1';
 export class ApplicationsHttpClientV1 extends CommandableHttpClient implements IApplicationsClientV1 {       
     
     constructor(config?: any) {
-        super('applications');
+        super('v1/applications');
 
         if (config != null)
             this.configure(ConfigParams.fromValue(config));
