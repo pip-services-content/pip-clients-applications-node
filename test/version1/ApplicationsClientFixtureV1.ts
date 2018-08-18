@@ -9,7 +9,7 @@ import { IApplicationsClientV1 } from '../../src/version1/IApplicationsClientV1'
 
 let APPLICATION1: ApplicationV1 = {
     id: '1',
-    name: 'App 1',
+    name: { en: 'App 1' },
     product: 'Product 1',
     copyrights: 'PipDevs 2018',
     min_ver: 0,
@@ -17,7 +17,7 @@ let APPLICATION1: ApplicationV1 = {
 };
 let APPLICATION2: ApplicationV1 = {
     id: '2',
-    name: 'App 2',
+    name: { en: 'App 2' },
     product: 'Product 1',
     copyrights: 'PipDevs 2018',
     min_ver: 0,
@@ -44,7 +44,7 @@ export class ApplicationsClientFixtureV1 {
                         assert.isNull(err);
 
                         assert.isObject(application);
-                        assert.equal(application.name, APPLICATION1.name);
+                        assert.equal(application.name.en, APPLICATION1.name.en);
                         assert.equal(application.product, APPLICATION1.product);
                         assert.equal(application.copyrights, APPLICATION1.copyrights);
 
@@ -63,7 +63,7 @@ export class ApplicationsClientFixtureV1 {
                         assert.isNull(err);
 
                         assert.isObject(application);
-                        assert.equal(application.name, APPLICATION2.name);
+                        assert.equal(application.name.en, APPLICATION2.name.en);
                         assert.equal(application.product, APPLICATION2.product);
                         assert.equal(application.copyrights, APPLICATION2.copyrights);
 
@@ -91,7 +91,7 @@ export class ApplicationsClientFixtureV1 {
             },
         // Update the application
             (callback) => {
-                application1.name = 'Updated Name 1';
+                application1.name.en = 'Updated Name 1';
 
                 this._client.updateApplication(
                     null,
@@ -100,7 +100,7 @@ export class ApplicationsClientFixtureV1 {
                         assert.isNull(err);
 
                         assert.isObject(application);
-                        assert.equal(application.name, 'Updated Name 1');
+                        assert.equal(application.name.en, 'Updated Name 1');
                         assert.equal(application.id, APPLICATION1.id);
 
                         application1 = application;
