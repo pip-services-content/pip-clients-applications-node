@@ -1,7 +1,7 @@
 import { FilterParams } from 'pip-services-commons-node';
 import { PagingParams } from 'pip-services-commons-node';
 import { DataPage } from 'pip-services-commons-node';
-import { DirectClient } from 'pip-services-net-node';
+import { DirectClient } from 'pip-services-rpc-node';
 import { IApplicationsClientV1 } from './IApplicationsClientV1';
 import { ApplicationV1 } from './ApplicationV1';
 export declare class ApplicationsDirectClientV1 extends DirectClient<any> implements IApplicationsClientV1 {
