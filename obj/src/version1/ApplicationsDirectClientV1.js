@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_rpc_node_1 = require("pip-services-rpc-node");
-class ApplicationsDirectClientV1 extends pip_services_rpc_node_1.DirectClient {
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_rpc_node_1 = require("pip-services3-rpc-node");
+class ApplicationsDirectClientV1 extends pip_services3_rpc_node_1.DirectClient {
     constructor() {
         super();
-        this._dependencyResolver.put('controller', new pip_services_commons_node_1.Descriptor("pip-services-applications", "controller", "*", "*", "*"));
+        this._dependencyResolver.put('controller', new pip_services3_commons_node_1.Descriptor("pip-services-applications", "controller", "*", "*", "*"));
     }
     getApplications(correlationId, filter, paging, callback) {
         let timing = this.instrument(correlationId, 'applications.get_applications');
