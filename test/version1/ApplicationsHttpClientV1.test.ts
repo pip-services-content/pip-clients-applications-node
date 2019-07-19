@@ -6,9 +6,9 @@ import { ConfigParams } from 'pip-services3-commons-node';
 import { References } from 'pip-services3-commons-node';
 import { ConsoleLogger } from 'pip-services3-components-node';
 
-import { ApplicationsMemoryPersistence } from 'pip-services-Applications-node';
-import { ApplicationsController } from 'pip-services-Applications-node';
-import { ApplicationsHttpServiceV1 } from 'pip-services-Applications-node';
+import { ApplicationsMemoryPersistence } from 'pip-services-applications-node';
+import { ApplicationsController } from 'pip-services-applications-node';
+import { ApplicationsHttpServiceV1 } from 'pip-services-applications-node';
 import { IApplicationsClientV1 } from '../../src/version1/IApplicationsClientV1';
 import { ApplicationsHttpClientV1 } from '../../src/version1/ApplicationsHttpClientV1';
 import { ApplicationsClientFixtureV1 } from './ApplicationsClientFixtureV1';

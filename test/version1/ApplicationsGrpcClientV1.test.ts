@@ -8,12 +8,20 @@ import { ConsoleLogger } from 'pip-services3-components-node';
 
 import { ApplicationsMemoryPersistence } from 'pip-services-applications-node';
 import { ApplicationsController } from 'pip-services-applications-node';
+import { ApplicationsGrpcServiceV1 } from 'pip-services-applications-node';
 import { IApplicationsClientV1 } from '../../src/version1/IApplicationsClientV1';
-import { ApplicationsDirectClientV1 } from '../../src/version1/ApplicationsDirectClientV1';
+import { ApplicationsGrpcClientV1 } from '../../src/version1/ApplicationsGrpcClientV1';
 import { ApplicationsClientFixtureV1 } from './ApplicationsClientFixtureV1';
 
-suite('ApplicationsDirectClientV1', ()=> {
-    let client: ApplicationsDirectClientV1;
+var httpConfig = ConfigParams.fromTuples(
+    "connection.protocol", "http",
+    "connection.host", "localhost",
+    "connection.port", 3000
+);
+
+suite('ApplicationsGrpcClientV1', ()=> {
+    let service: ApplicationsGrpcServiceV1;
+    let client: ApplicationsGrpcClientV1;
     let fixture: ApplicationsClientFixtureV1;
 
     suiteSetup((done) => {
@@ -21,23 +29,32 @@ suite('ApplicationsDirectClientV1', ()=> {
         let persistence = new ApplicationsMemoryPersistence();
         let controller = new ApplicationsController();
 
+        service = new ApplicationsGrpcServiceV1();
+        service.configure(httpConfig);
+
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('pip-services-applications', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('pip-services-applications', 'controller', 'default', 'default', '1.0'), controller,
+            new Descriptor('pip-services-applications', 'service', 'grpc', 'default', '1.0'), service
         );
         controller.setReferences(references);
+        service.setReferences(references);
 
-        client = new ApplicationsDirectClientV1();
+        client = new ApplicationsGrpcClientV1();
         client.setReferences(references);
+        client.configure(httpConfig);
 
         fixture = new ApplicationsClientFixtureV1(client);
 
-        client.open(null, done);
+        service.open(null, (err) => {
+            client.open(null, done);
+        });
     });
     
     suiteTeardown((done) => {
-        client.close(null, done);
+        client.close(null);
+        service.close(null, done);
     });
 
     test('CRUD Operations', (done) => {
