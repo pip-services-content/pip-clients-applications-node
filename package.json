@@ -59,6 +59,6 @@
         "matcha": "*",
         "mocha": "*",
         "aws-sdk": "*",
-        "pip-services-applications-node": "git+ssh://git@github.com:pip-services-content/pip-services-applications-node.git"
+        "pip-services-applications-node": "^1.1.1"
     }
 }

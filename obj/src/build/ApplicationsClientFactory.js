@@ -15,10 +15,10 @@ class ApplicationsClientFactory extends pip_services3_components_node_1.Factory 
         this.registerAsType(ApplicationsClientFactory.LambdaClientV1Descriptor, ApplicationsLambdaClientV1_1.ApplicationsLambdaClientV1);
     }
 }
+exports.ApplicationsClientFactory = ApplicationsClientFactory;
 ApplicationsClientFactory.Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-applications', 'factory', 'default', 'default', '1.0');
 ApplicationsClientFactory.NullClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-applications', 'client', 'null', 'default', '1.0');
 ApplicationsClientFactory.DirectClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-applications', 'client', 'direct', 'default', '1.0');
 ApplicationsClientFactory.HttpClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-applications', 'client', 'http', 'default', '1.0');
 ApplicationsClientFactory.LambdaClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-applications', 'client', 'lambda', 'default', '1.0');
-exports.ApplicationsClientFactory = ApplicationsClientFactory;
 //# sourceMappingURL=ApplicationsClientFactory.js.map
